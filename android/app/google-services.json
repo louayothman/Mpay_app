@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "811382017462",
+    "project_id": "mopay-pro",
+    "storage_bucket": "mopay-pro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811382017462:android:ca115cd79ea21522af8517",
+        "android_client_info": {
+          "package_name": "com.mpay.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_mmUHXM3had5NDFDejogVzTlt4QyZSKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
