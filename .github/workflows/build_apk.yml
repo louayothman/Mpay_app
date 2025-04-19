@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      actions: write # إضافة هذه السطر لمنح صلاحية الكتابة لإجراءات GitHub
+      contents: read # هذه الصلاحية مطلوبة عادةً لـ actions/checkout
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -37,7 +40,7 @@ jobs:
         run: flutter build apk --release
 
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: mpay-app-release
           path: build/app/outputs/flutter-apk/app-release.apk
