@@ -1,69 +1,54 @@
-name: Build and Release APK
+name: Build Release APK
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
-  build:
+  build_release_apk:
+    name: Build Release APK
     runs-on: ubuntu-latest
     permissions:
-      actions: write # إضافة هذه السطر لمنح صلاحية الكتابة لإجراءات GitHub
-      contents: read # هذه الصلاحية مطلوبة عادةً لـ actions/checkout
+      actions: write
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Java
+      - name: Setup Java JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
           java-version: '17'
+          distribution: 'zulu'
 
-      - name: Setup Flutter
+      - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.0'
+          flutter-version: 'stable' # يمكنك تغييرها إلى إصدار محدد إذا لزم الأمر
           channel: 'stable'
           cache: true
+          cache-key: flutter-stable-${{ hashFiles('pubspec.lock') }}
+          cache-path: ${{ runner.tool_cache }}/flutter
 
-      - name: Get dependencies
+      - name: Get Flutter dependencies
         run: flutter pub get
+
+      - name: Check Flutter environment
+        run: flutter doctor -v
 
       - name: Run tests
         run: flutter test
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Build Release APK
+        run: flutter build apk --release --split-per-abi
 
-      - name: Upload APK
+      - name: Upload Release APK
         uses: actions/upload-artifact@v3
         with:
-          name: mpay-app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
-
-  release:
-    name: Create Release
-    needs: build
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download APK
-        uses: actions/download-artifact@v3
-        with:
-          name: mpay-app-release
-
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: app-release.apk
-          tag_name: v${{ github.run_number }}
-          name: Release v${{ github.run_number }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: release-apk
+          path: build/app/outputs/flutter-apk/release/**/app-*.apk
+          if-no-files-found: error
