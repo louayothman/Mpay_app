@@ -12,65 +12,57 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: 1.0.6
-  firebase_core: 2.15.1
-  firebase_auth: 4.7.3
-  firebase_storage: 11.2.6
-  firebase_messaging: 14.6.7
-  cloud_firestore: 4.8.5
-  qr_flutter: 4.1.0
-  qr_code_scanner: 1.0.2
-  shared_preferences: 2.2.0
-  provider: 6.0.5
-  http: 1.1.0
-  intl: 0.18.1
+  cupertino_icons: ^1.0.6
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.7.3
+  firebase_storage: ^11.2.6
+  firebase_messaging: ^14.6.7
+  cloud_firestore: ^4.8.5
+  qr_flutter: ^4.1.0
+  qr_code_scanner: ^0.7.0
+  shared_preferences: ^2.2.0
+  provider: ^6.0.5
+  http: ^1.1.0
+  intl: ^0.19.0
   flutter_localizations:
     sdk: flutter
-  # Additional libraries
-  connectivity_plus: 3.0.0
-  internet_connection_checker: 1.0.0
-  flutter_secure_storage: 8.1.0
-  crypto: 3.0.3
-  local_auth: 2.1.6
-  google_sign_in: 6.1.4
-  # Visual effect libraries
-  shimmer: 2.0.0
-  flutter_native_splash: 2.3.6
-  flutter_cache_manager: 3.3.1
-  cached_network_image: 3.3.0
-  # Wallet address validation
-  # Custom implementation in lib/utils/wallet_validator.dart
-  image_picker: 1.0.4
-  go_router: 12.1.1
-  flutter_riverpod: 2.4.9
-  animations: 2.0.8
-  path_provider: 2.1.1
-  flutter_isolate: 2.0.4
-  # Device info for compatibility checks
-  device_info_plus: 9.0.3
-  # NFC manager for device capability checks
-  nfc_manager: 3.3.0
+  connectivity_plus: ^3.0.0
+  internet_connection_checker: ^1.0.0
+  flutter_secure_storage: ^8.1.0
+  crypto: ^3.0.3
+  local_auth: ^2.1.6
+  google_sign_in: ^6.1.4
+  shimmer: ^2.0.0
+  flutter_native_splash: ^2.3.6
+  flutter_cache_manager: ^3.3.1
+  cached_network_image: ^3.3.0
+  image_picker: ^1.0.4
+  go_router: ^12.1.1
+  flutter_riverpod: ^2.4.9
+  animations: ^2.0.8
+  path_provider: ^2.1.1
+  flutter_isolate: ^2.0.4
+  device_info_plus: ^9.0.3
+  nfc_manager: ^3.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 2.0.3
-  mockito: 5.4.2
-  network_image_mock: 2.1.1
-  build_runner: 2.4.6
+  flutter_lints: ^2.0.3
+  mockito: ^5.4.5
+  network_image_mock: ^2.1.1
+  build_runner: ^2.4.6
   integration_test:
     sdk: flutter
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - assets/images/
     - assets/icons/
     - assets/fonts/
-    
+
   fonts:
     - family: Roboto
       fonts:
